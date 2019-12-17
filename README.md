@@ -2,7 +2,7 @@
 
 DbgDraw is an API that provides the ability to render various 2D and 3D shapes for visual debugging purposes. It's similar to Unity's [Gizmos](https://docs.unity3d.com/ScriptReference/Gizmos.html) and [Handles](https://docs.unity3d.com/ScriptReference/Handles.html) API's. Unity also provides a rather limited set of debug draw functions in the Debug class, such as [Debug.DrawLine](https://docs.unity3d.com/ScriptReference/Debug.DrawLine.html) for example.
 
-Unline Unity's Gizmo, which requires Gizmos rendering code to be located in a [OnDrawGizmos](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnDrawGizmos.html) method, you can issue DbgDraw calls from anywhere in your code. Rather than issueing these render calls immediately, DbgDraw collects those calls and defers the actual rendering to a later time. This allows to call DbgDraw from any method, be it Start(), Update() etc.
+Unlike Unity's Gizmo, which requires Gizmos rendering code to be located in a [OnDrawGizmos](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnDrawGizmos.html) method, you can issue DbgDraw calls from anywhere in your code. Rather than issuing these render calls immediately, DbgDraw collects those calls and defers the actual rendering to a later time. This allows to call DbgDraw from any method, be it Start(), Update() etc.
 
 DbgDraw provides functionality to render the following shapes:
 * Arc
