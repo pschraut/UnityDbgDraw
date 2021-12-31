@@ -1,4 +1,4 @@
-﻿// DbgDraw for Unity. Copyright (c) 2019 Peter Schraut (www.console-dev.de). See LICENSE.md
+﻿// DbgDraw for Unity. Copyright (c) 2019-2021 Peter Schraut (www.console-dev.de). See LICENSE.md
 // https://github.com/pschraut/UnityDbgDraw
 using System.Collections.Generic;
 using UnityEngine;
@@ -245,6 +245,17 @@ namespace Oddworm.Framework
                 }
 
                 gameObject.AddComponent<PreDbgDrawBehaviour>().debugDrawBehaviour = this;
+                RenderPipelineManager.endCameraRendering += OnRenderPipelineManagerEndCameraRendering;
+            }
+
+            void OnRenderPipelineManagerEndCameraRendering(ScriptableRenderContext context, Camera camera)
+            {
+                if (!isActiveAndEnabled)
+                    return;
+
+                UnityEngine.Profiling.Profiler.BeginSample("DbgDraw.Render", camera);
+                Render(camera);
+                UnityEngine.Profiling.Profiler.EndSample();
             }
 
             Material[,] CreateMaterialArray(string shaderName)
@@ -302,12 +313,14 @@ namespace Oddworm.Framework
                 m_ShadedMaterials = null;
                 m_ColoredMaterials = null;
                 m_LineBatch = null;
+                RenderPipelineManager.endCameraRendering -= OnRenderPipelineManagerEndCameraRendering;
             }
 
             void OnRenderObject()
             {
-                UnityEngine.Profiling.Profiler.BeginSample("DbgDraw.Render");
-                Render(Camera.current);
+                var camera = Camera.current;
+                UnityEngine.Profiling.Profiler.BeginSample("DbgDraw.Render", camera);
+                Render(camera);
                 UnityEngine.Profiling.Profiler.EndSample();
             }
 
