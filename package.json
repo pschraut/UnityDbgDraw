@@ -1,9 +1,9 @@
 {
   "name": "com.oddworm.dbgdraw",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "Debug Draw API",
   "description": "DbgDraw provides the ability to render various 2D and 3D shapes for visual debugging purposes. It's similar to Unity's Gizmos and Handles API's.",
-  "unity": "2018.3",
+  "unity": "2019.3",
   "dependencies": {
 	"com.unity.test-framework": "1.1.3"
   },

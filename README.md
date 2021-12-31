@@ -36,7 +36,7 @@ Please import the "DbgDraw Examples" file, which part of this package, for more 
 
 # Limitations
 
-* DbgDraw works with Unity 2018.3 and later versions.
+* DbgDraw works with Unity 2019.3 and later versions.
 * DbgDraw works in the Unity editor and [development mode](https://docs.unity3d.com/Manual/BuildSettings.html) builds. 
 * DbgDraw works in play mode only.
 * DbgDraw has been created for visual debugging purposes, not a fast general purpose shape rendering API.
@@ -44,11 +44,13 @@ Please import the "DbgDraw Examples" file, which part of this package, for more 
 
 # Installation
 
-As of Unity 2019.3, Unity supports to add packages from git through the Package Manager window. In Unity's Package Manager, choose "Add package from git URL" and insert one of the Package URL's you can find below.
-
-In earlier Unity versions, you should be able to download the repository and copy it to your projects 'Assets' directory.
+Open in Unity Window > Package Manager, choose "Add package from git URL" and insert one of the Package URL's you can find below.
 
 ## Package URL's
+
+I recommend to right-click the URL below and choose "Copy Link" rather than selecting the text and copying it, because sometimes it copies a space at the end and the Unity Package Manager can't handle it and spits out an error when you try to add the package.
+
+Please see the ```CHANGELOG.md``` file to see what's changed in each version.
 
 | Version  |     Link      |
 |----------|:-------------:|
