@@ -1,4 +1,4 @@
-﻿// DbgDraw for Unity. Copyright (c) 2019 Peter Schraut (www.console-dev.de). See LICENSE.md
+﻿// DbgDraw for Unity. Copyright (c) 2019-2022 Peter Schraut (www.console-dev.de). See LICENSE.md
 // https://github.com/pschraut/UnityDbgDraw
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +26,7 @@ namespace Oddworm.Framework
             }
 
             job.mesh = s_PlaneMesh;
-            job.matrix = Matrix4x4.TRS(position, Quaternion.LookRotation(plane.normal, Vector3.forward), scale);
+            job.matrix = Matrix4x4.TRS(position, Quaternion.LookRotation(plane.normal), scale);
             job.color = color;
 
             job.Submit();
@@ -37,26 +37,26 @@ namespace Oddworm.Framework
             var mesh = new Mesh();
             mesh.name = "DbgDraw-Plane-Mesh";
 
-            var vertices = new List<Vector3>(64 * 3);
+            var vertices = new List<Vector3>(4 * 3);
             var s = 0.5f;
 
             // quad
-            vertices.Add(new Vector3(-s, 0, -s)); // near left
-            vertices.Add(new Vector3(-s, 0, +s)); // far left
-            vertices.Add(new Vector3(+s, 0, +s)); // far right
+            vertices.Add(new Vector3(-s, -s, 0));
+            vertices.Add(new Vector3(-s, +s, 0));
+            vertices.Add(new Vector3(+s, +s, 0));
 
-            vertices.Add(new Vector3(+s, 0, +s)); // far right
-            vertices.Add(new Vector3(+s, 0, -s)); // near right
-            vertices.Add(new Vector3(-s, 0, -s)); // near left
+            vertices.Add(new Vector3(+s, +s, 0));
+            vertices.Add(new Vector3(+s, -s, 0));
+            vertices.Add(new Vector3(-s, -s, 0));
 
             // "arrrow"
             s = 0.01f;
-            vertices.Add(new Vector3(0, 0, -s));
-            vertices.Add(new Vector3(0, 0.25f, 0));
-            vertices.Add(new Vector3(0, 0, +s));
+            vertices.Add(new Vector3(0, -s, 0));
+            vertices.Add(new Vector3(0, 0, 0.25f));
+            vertices.Add(new Vector3(0, +s, 0));
 
             vertices.Add(new Vector3(-s, 0, 0));
-            vertices.Add(new Vector3(0, 0.25f, 0));
+            vertices.Add(new Vector3(0, 0, 0.25f));
             vertices.Add(new Vector3(+s, 0, 0));
 
 
