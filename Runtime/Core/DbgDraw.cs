@@ -588,7 +588,11 @@ namespace Oddworm.Framework
                 if (s_Instance != null)
                     return s_Instance;
 
+#if UNITY_2023_1_OR_NEWER
+                s_Instance = DbgDrawBehaviour.FindFirstObjectByType<DbgDrawBehaviour>();
+#else
                 s_Instance = DbgDrawBehaviour.FindObjectOfType<DbgDrawBehaviour>();
+#endif
                 if (s_Instance == null)
                 {
                     s_Instance = new GameObject("DbgDraw").AddComponent<DbgDrawBehaviour>();
