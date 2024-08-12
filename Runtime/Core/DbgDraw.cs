@@ -231,8 +231,8 @@ namespace Oddworm.Framework
 
             void Awake()
             {
-                m_ColoredMaterials = CreateMaterialArray("Hidden/Internal-Colored");
-                m_ShadedMaterials = CreateMaterialArray("Hidden/DbgDraw-Shaded");
+                m_ColoredMaterials = CreateMaterialArray("Hidden/Internal-Colored"); // Added to "Always Included Shaders" in the Graphics settings by Unity
+                m_ShadedMaterials = CreateMaterialArray("Hidden/DbgDraw-Shaded"); // Added to "Always Included Shaders" in the Graphics settings by DbgDrawBuildProcessor
 
                 m_LineBatch = new LineBatchJob[2, 3];
                 for (var y = 0; y < m_LineBatch.GetLength(0); ++y)
@@ -277,7 +277,20 @@ namespace Oddworm.Framework
 
             Material CreateMaterial(string shaderName, CullMode cullMode, bool depthTest)
             {
-                var material = new Material(Shader.Find(shaderName));
+                var shader = Shader.Find(shaderName);
+                if (shader == null)
+                {
+                    // This should not occur, but if it does, we try to find a fallback shader
+                    Debug.LogError($"{nameof(DbgDraw)}: Cannot find shader '{shaderName}'. {nameof(DbgDraw)} will not work correctly.");
+                    foreach (var fallback in new[] { "Hidden/Internal-Colored", "Unlit/Color" })
+                    {
+                        shader = Shader.Find(shaderName);
+                        if (shader != null)
+                            break;
+                    }
+                }
+
+                var material = new Material(shader);
 
                 material.SetColor("_Color", Color.white);
                 material.SetInt("_SrcBlend", (int)BlendMode.SrcAlpha);

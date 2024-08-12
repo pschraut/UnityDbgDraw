@@ -1,0 +1,18 @@
+{
+    "name": "Unity.DbgDraw.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f0ca7da2c713f5849a8e3326866a5e49"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
