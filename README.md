@@ -38,7 +38,7 @@ Please import the "DbgDraw Examples" file, which part of this package, for more 
 
 # Limitations
 
-* DbgDraw works with Unity 2019.3 and later versions.
+* DbgDraw works with Unity 2020.3 and later versions.
 * DbgDraw works in the Unity editor and [development mode](https://docs.unity3d.com/Manual/BuildSettings.html).
 * DbgDraw works in play mode only.
 * DbgDraw has been created for visual debugging purposes, not as a fast general purpose shape rendering API.
@@ -56,6 +56,7 @@ Please see the ```CHANGELOG.md``` file to see what's changed in each version.
 
 | Version  |     Link      |
 |----------|:-------------:|
+| 1.2.0 | https://github.com/pschraut/UnityDbgDraw.git#1.2.0 |
 | 1.1.0 | https://github.com/pschraut/UnityDbgDraw.git#1.1.0 |
 | 1.0.0 | https://github.com/pschraut/UnityDbgDraw.git#1.0.0 |
 
@@ -75,3 +76,6 @@ DbgDraw works in a build only, if you tick the ```Development Build``` checkbox 
 
 If you untick the ```Development Build``` checkbox in the Build Settings window (File > Build Settings), calls to DbgDraw are being removed by the compiler.
 
+### "Hidden/DbgDraw-Shaded" in Always Included Shaders
+
+The package automatically adds the ```Hidden/DbgDraw-Shaded``` shader to the 'Always Included Shaders' list in the Player settings when you create a build. This is required to make the DbgDraw package work in a build. It's a very simple shader that does add a trivial amount of size to the build.
