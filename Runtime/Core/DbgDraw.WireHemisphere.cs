@@ -1,4 +1,4 @@
-﻿// DbgDraw for Unity. Copyright (c) 2019 Peter Schraut (www.console-dev.de). See LICENSE.md
+﻿// DbgDraw for Unity. Copyright (c) 2019-2024 Peter Schraut (www.console-dev.de). See LICENSE.md
 // https://github.com/pschraut/UnityDbgDraw
 using System.Collections.Generic;
 using UnityEngine;
